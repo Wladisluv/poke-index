@@ -1,9 +1,11 @@
-import './App.css';
+import Home from './pages/Home/Home';
+import styles from './app.module.scss';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      
+    <div className={styles.app}>
+      <Home />
     </div>
   );
 }
