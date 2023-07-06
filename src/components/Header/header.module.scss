@@ -1,0 +1,38 @@
+.header {
+    &-wrapper {
+        background-color: #dad8d8;
+    }
+
+    &-container {
+    margin: 0 auto;
+    max-width: 1300px;
+    max-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        width: 256px;
+        height: 256px;
+        svg {
+            width: 220px;
+            height: 220px;
+        }
+    }
+
+    &-right {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // width: 18rem;
+        overflow: hidden;
+
+        svg {
+            width: 128px;
+            height: 128px;
+        }
+    }
+}
