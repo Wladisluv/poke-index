@@ -1,20 +1,21 @@
-import { useAppSelector } from "../../Hooks/hooks"
-import PokeCard from "../Poke-Card/PokeCard";
+import { generatedPokemonType } from "../../utils/Types"
+import PokeCard from "../Poke-Card/PokeCard"
 
-const PokeList: React.FC = () => {
-    
-
+const PokeList = ({ pokemons }: { pokemons: generatedPokemonType [] }) => {
   return (
     <>
-        {/* {pokes?.map((poke: any, id: number, image: any, name: string, type: any) => (
-            <PokeCard
-            key={poke.id}
-            id={id}
-            image={image}
-            name={name}
-            type={type}
+        {pokemons?.map((data: generatedPokemonType ) => {
+          const types = data.types.map((type) => type.type.name);
+          return (
+            <PokeCard 
+            key={data.id}
+            name={data.name}
+            id={data.id}
+            image={data.sprites.versions['generation-v']['black-white'].animated.front_default}
+            types={types}
             />
-        ))} */}
+          )
+          })}
     </>
   )
 }

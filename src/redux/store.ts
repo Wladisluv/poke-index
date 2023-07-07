@@ -1,12 +1,14 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit'
-import { AppSlice } from './slices/AppSlice';
-// import { PokemonSlice } from './slices/PokemonSlice';
+import { PokemonSlice } from './slices/PokemonSlice';
 
 export const store = configureStore({
   reducer: {
-    app: AppSlice.reducer,
-    // pokemon: PokemonSlice.reducer,
-  }
+    pokemon: PokemonSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    immutableCheck: false,
+    serializableCheck: false,
+  })
 });
 
 export type RootState = ReturnType<typeof store.getState>;

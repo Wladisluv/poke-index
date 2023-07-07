@@ -1,22 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+:root {
+    --grass: #5FBD58;
+    --bug: #92BC2C;
+    --dark: #595761;
+    --dragon: #0C69C8;
+    --electric: #F2D94E;
+    --fairy: #EE90E6;
+    --fighting: #D3425F;
+    --fire: #dc872f;
+    --flying: #A1BBEC;
+    --ghost: #5F6DBC;
+    --ground: #DA7C4D;
+    --ice: #75D0C1;
+    --normal: #A0A29F;
+    --poison: #B763CF;
+    --psychic: #ff2ca8;
+    --rock: #a38c21;
+    --steel: #5695A3;
+    --water: #539DDF;
+  }
+
 .pokecard {
     position: relative;
     width: 20rem;
     height: 20rem;
     border-radius: 10%;
-    background-color: #a0a0a0;
+    transition: all 0.2s ease-in-out;
+    box-shadow:
+    0 1.6px 1.6px rgba(0, 0, 0, 0.023),
+    0 3.8px 3.8px rgba(0, 0, 0, 0.034),
+    0 6.9px 6.9px rgba(0, 0, 0, 0.041),
+    0 11.4px 11.4px rgba(0, 0, 0, 0.049),
+    0 18.8px 18.8px rgba(0, 0, 0, 0.056),
+    0 32.8px 32.8px rgba(0, 0, 0, 0.067),
+    0 71px 71px rgba(0, 0, 0, 0.09);
 
     &:hover {
         transform: scale(1.1);
-        transition: all .2s ease-in-out;
     }
 
     &__id {
-    background: #e4c439;
-    width: 3rem;
+    background: #000000;
+    width: 4rem;
     color: #fff;
     padding: 0.5rem;
+    letter-spacing: 0.1rem;
+    font-size: 14px;
+    font-family: "Press Start 2P";
+    font-style: italic;
     font-weight: 700;
     position: absolute;
     border-radius: 10px 0 10px 0;
@@ -29,7 +61,7 @@
         justify-content: flex-end;
 
         svg {
-            margin-top: 10px;
+            margin-top: 5px;
             margin-right: 15px;
             width: 25px;
             height: 25px;
@@ -48,6 +80,7 @@
     }
 
     &__name {
+        padding-top: 10px;
         text-align: center;
 
         h3 {
@@ -71,12 +104,101 @@
             justify-content: center;
             align-content: center;
             align-items: center;
-            background: #757373;
 
             img {
-                width: 20px;
-                height: 20px;
+                width: 40px;
+                height: 40px;
             }
         }
     }
 }
+
+.grass {
+    background: var(--grass);
+    box-shadow: 0 0 20px var(--grass);
+  }
+  
+  .bug {
+    background: var(--bug);
+    box-shadow: 0 0 20px var(--bug);
+  }
+  
+  .dark {
+    background: var(--dark);
+    box-shadow: 0 0 20px var(--dark);
+  }
+  
+  .dragon {
+    background: var(--dragon);
+    box-shadow: 0 0 20px var(--dragon);
+  }
+  
+  .electric {
+    background: var(--electric);
+    box-shadow: 0 0 20px #796d26;
+  }
+  
+  .fairy {
+    background: var(--fairy);
+    box-shadow: 0 0 20px var(--fairy);
+  }
+  
+  .fighting {
+    background: var(--fighting);
+    box-shadow: 0 0 20px var(--fighting);
+  }
+  
+  .flying {
+    background: var(--flying);
+    box-shadow: 0 0 20px var(--flying);
+  }
+  
+  .ghost {
+    background: var(--ghost);
+    box-shadow: 0 0 20px var(--ghost);
+  }
+  
+  .ground {
+    background: var(--ground);
+    box-shadow: 0 0 20px var(--ground);
+  }
+  
+  .ice {
+    background: var(--ice);
+    box-shadow: 0 0 20px var(--ice);
+  }
+  
+  .normal {
+    background: var(--normal);
+    box-shadow: 0 0 20px var(--normal);
+  }
+  
+  .poison {
+    background: var(--poison);
+    box-shadow: 0 0 20px var(--poison);
+  }
+  
+  .psychic {
+    background: var(--psychic);
+    box-shadow: 0 0 20px var(--psychic);
+  }
+  
+  .rock {
+    background: var(--rock);
+    box-shadow: 0 0 20px var(--rock);
+  }
+  
+  .steel {
+    background: var(--steel);
+    box-shadow: 0 0 20px var(--steel);
+  }
+  
+  .water {
+    background: var(--water);
+    box-shadow: 0 0 20px var(--water);
+  }
+  
+  .fire {
+    background: var(--fire);
+    box-shadow: 0 0 20px var(--fire);
+  }
