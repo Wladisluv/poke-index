@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './app.module.scss';
 import Header from './components/Header/Header';
 import PokeList from './components/Poke-List/PokeList';
@@ -6,18 +6,19 @@ import { useAppDispatch, useAppSelector } from './Hooks/hooks';
 import { getInitialPokemonData } from './redux/reducers/getInitialPokemonData';
 import Loader from './components/Loader/Loader';
 import Filters from './components/Filters/Filters';
-import { pokemonTypes } from './utils/pokemonTypes';
 import { regionLimits } from './utils/regionTypes';
 
 const App = () => {
   const dispatch = useAppDispatch();
   const { allPokemon, pending, regionFilter, typeFilter, sortBy } = useAppSelector(({ pokemon }) => pokemon)
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     dispatch(getInitialPokemonData());
   }, [dispatch, regionFilter]);
 
   let filteredPokemon = Array.isArray(allPokemon) ? [...allPokemon] : [];
+
   if (regionFilter && regionFilter !== 'Kanto') {
     const { limit, offset } = regionLimits[regionFilter] || { limit: 0, offset: 0 };
     filteredPokemon = filteredPokemon.filter((pokemon) => pokemon.id >= offset + 1 && pokemon.id <= offset + limit);
@@ -40,11 +41,22 @@ const App = () => {
       }
       return 0;
     });
+  };
+
+
+  if (searchQuery.length > 0) {
+    filteredPokemon = filteredPokemon.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
   }
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
 
   return (
     <div className={styles['app-wrapper']}>
-        <Header/>
+        <Header onSearch={handleSearch} />
       <div className={styles['app-container']}>
         <Filters />
       {pending ? 
