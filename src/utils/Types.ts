@@ -2,9 +2,14 @@
     allPokemon: genericPokemonType[] | undefined;
     pending: any;
     rejected: any;
+    regionFilter: string | null;
+    typeFilter: string | null;
+    sortBy: string | null;
+    types: string[];
   }
   
   export interface genericPokemonType {
+    region: string;
     sprites: any;
     name: string;
     url: string;

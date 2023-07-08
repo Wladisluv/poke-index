@@ -5,27 +5,53 @@ import PokeList from './components/Poke-List/PokeList';
 import { useAppDispatch, useAppSelector } from './Hooks/hooks';
 import { getInitialPokemonData } from './redux/reducers/getInitialPokemonData';
 import Loader from './components/Loader/Loader';
-
+import Filters from './components/Filters/Filters';
+import { pokemonTypes } from './utils/pokemonTypes';
+import { regionLimits } from './utils/regionTypes';
 
 const App = () => {
   const dispatch = useAppDispatch();
-  const { allPokemon } = useAppSelector(({ pokemon }) => pokemon)
-  const pending = useAppSelector((state) => state.pokemon.pending);
-  
+  const { allPokemon, pending, regionFilter, typeFilter, sortBy } = useAppSelector(({ pokemon }) => pokemon)
 
   useEffect(() => {
     dispatch(getInitialPokemonData());
-  }, [dispatch]);
+  }, [dispatch, regionFilter]);
+
+  let filteredPokemon = Array.isArray(allPokemon) ? [...allPokemon] : [];
+  if (regionFilter && regionFilter !== 'Kanto') {
+    const { limit, offset } = regionLimits[regionFilter] || { limit: 0, offset: 0 };
+    filteredPokemon = filteredPokemon.filter((pokemon) => pokemon.id >= offset + 1 && pokemon.id <= offset + limit);
+    console.log('Filtered by region:', filteredPokemon);
+  }
+
+  if (typeFilter) {
+    filteredPokemon = filteredPokemon.filter((pokemon) =>
+    pokemon.types.some((type: any) => type.type && type.type.name && type.type.name.toLowerCase() === typeFilter.toLowerCase())
+  );
+}
+
+  if (sortBy) {
+    filteredPokemon = [...filteredPokemon];
+    filteredPokemon.sort((a, b) => {
+      if (sortBy === "id") {
+        return a.id - b.id;
+      } else if (sortBy === "name") {
+        return a.name.localeCompare(b.name);
+      }
+      return 0;
+    });
+  }
 
   return (
     <div className={styles['app-wrapper']}>
         <Header/>
       <div className={styles['app-container']}>
+        <Filters />
       {pending ? 
         <Loader /> 
         :
         <div className={styles['app-pokecard-container']}>
-        <PokeList pokemons={allPokemon ? [...allPokemon] : []} />
+        <PokeList pokemons={filteredPokemon} />
         </div> 
         }
       </div>

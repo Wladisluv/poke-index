@@ -1,17 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { PokemonInitialStateType } from "../../utils/Types";
 import { getInitialPokemonData } from "../reducers/getInitialPokemonData";
 
+interface PokemonSliceState extends PokemonInitialStateType {
+  regionFilter: string | null;
+  typeFilter: string | null;
+  sortBy: string | null;
+}
+
 const initialState: PokemonInitialStateType = {
-  allPokemon: undefined,
+  allPokemon: [],
   pending: false,
   rejected: null,
+  regionFilter: null,
+  typeFilter: null,
+  sortBy: null,
+  types: [],
 };
 
 export const PokemonSlice = createSlice({
   name: "pokemon",
   initialState,
-  reducers: {},
+  reducers: {
+    setRegionFilter: (state, action: PayloadAction<string | null>) => {
+      state.regionFilter = action.payload;
+    },
+    setTypeFilter: (state, action: PayloadAction<string | null>) => {
+      state.typeFilter = action.payload;
+    },
+    setSortBy: (state, action: PayloadAction<string | null>) => {
+      state.sortBy = action.payload;
+    },
+  },
 
   extraReducers: (builder) => {
     builder.addCase(getInitialPokemonData.pending, (state) => {
@@ -31,4 +51,4 @@ export const PokemonSlice = createSlice({
     },
 });
 
-export const {} = PokemonSlice.actions
+export const { setRegionFilter, setTypeFilter, setSortBy } = PokemonSlice.actions
