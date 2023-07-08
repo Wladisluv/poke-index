@@ -1,5 +1,5 @@
 import Input from '../Input/Input';
-import { HeaderSvgSelector } from './HeaderSvgSelector';
+import { HeaderSvgSelector } from './HeaderLogoSvg';
 import styles from './header.module.scss';
 
 const Header = () => {

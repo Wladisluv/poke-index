@@ -11,7 +11,7 @@ const PokeList = ({ pokemons }: { pokemons: generatedPokemonType [] }) => {
             key={data.id}
             name={data.name}
             id={data.id}
-            image={data.sprites.versions['generation-v']['black-white'].animated.front_default}
+            image={data.sprites.versions['generation-v']['black-white'].animated.front_default || data.sprites.other['official-artwork'].front_default}
             types={types}
             />
           )
