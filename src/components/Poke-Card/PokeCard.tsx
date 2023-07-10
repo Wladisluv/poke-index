@@ -47,7 +47,12 @@ const PokeCard = ({ id, image, name, types, onInfoClick, isModalOpen }: Props) =
 
   return (
     <div className={styles.wrapper}>
-      <div className={isModalOpen ? `${styles.pokecard} ${styles.modal}` : styles.pokecard} style={{ background: `radial-gradient(circle, ${finalColor[0]}, ${finalColor[1]})` }}>
+      <div 
+      className={isModalOpen ? 
+        `${styles.pokecard} ${styles.modal}` 
+        : 
+        styles.pokecard} 
+        style={{ background: `linear-gradient(90deg, ${finalColor[0]}, ${finalColor[1]})` }}>
         <span className={styles.pokecard__id}>#{String(id).padStart(3, "0")}</span>
         <div className={styles['pokecard-top']}>
           <div className={isModalOpen ? `${styles["pokecard-top__info"]} ${styles.disable}` : styles['pokecard-top__info']} onClick={onInfoClick}>

@@ -23,7 +23,6 @@ const App = () => {
   if (regionFilter && regionFilter !== 'Kanto') {
     const { limit, offset } = regionLimits[regionFilter] || { limit: 0, offset: 0 };
     filteredPokemon = filteredPokemon.filter((pokemon) => pokemon.id >= offset + 1 && pokemon.id <= offset + limit);
-    console.log('Filtered by region:', filteredPokemon);
   }
 
   if (typeFilter) {
@@ -64,16 +63,16 @@ if (sortBy) {
      <Background />
      <div className={styles['app-wrapper']}>
         <Header onSearch={handleSearch} />
-      <div className={styles['app-container']}>
-        <Filters />
       {pending ? 
         <Loader /> 
         :
+      <div className={styles['app-container']}>
+        <Filters />
         <div className={styles['app-pokecard-container']}>
         <PokeList pokemons={filteredPokemon}/>
         </div> 
-        }
       </div>
+        }
     </div>
    </div>
   );

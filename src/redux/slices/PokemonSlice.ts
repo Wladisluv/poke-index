@@ -2,12 +2,6 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { PokemonInitialStateType } from "../../utils/Types";
 import { getInitialPokemonData } from "../reducers/getInitialPokemonData";
 
-interface PokemonSliceState extends PokemonInitialStateType {
-  regionFilter: string | null;
-  typeFilter: string | null;
-  sortBy: string | null;
-}
-
 const initialState: PokemonInitialStateType = {
   allPokemon: [],
   pending: false,

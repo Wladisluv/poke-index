@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body {
-    // background-color: #444444;
     margin: 0;
     padding: 0;
 }
@@ -25,9 +24,29 @@ h1 {
 
     &-pokecard-container {
         display: grid;
-        justify-items: center;
+        justify-content: center;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
+        gap: 60px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .app-pokecard-container {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 0.1fr 0.1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-pokecard-container {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 0.1fr;
+        grid-template-rows: 1fr;
         gap: 60px;
     }
 }

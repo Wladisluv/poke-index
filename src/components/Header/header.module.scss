@@ -1,18 +1,16 @@
 .header {
     &-container {
-    margin: 0 auto;
-    max-width: 1300px;
-    max-height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
+    max-width: 1300px;
+    max-height: 80px;
     }
 
     &__logo {
         display: flex;
         align-items: center;
-        width: 256px;
-        height: 256px;
         svg {
             width: 220px;
             height: 220px;
@@ -28,6 +26,27 @@
         svg {
             width: 128px;
             height: 128px;
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .header-container {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        &-container {
+            display: flex;
+            flex-direction: column;
+            max-height: 200px;
+        }
+
+        &__logo {
+            margin-bottom: 20px;
+            max-height: 80px;
         }
     }
 }
