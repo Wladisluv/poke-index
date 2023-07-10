@@ -21,11 +21,27 @@
           name?: string;
         }
       }
-    ]
+    ];
+    species: { url: string }
   }
 
   export interface generatedPokemonType {
-    sprites: any;
+    sprites: {
+      versions: {
+        'generation-v': {
+          'black-white': {
+            animated: {
+              front_default: string;
+            };
+          };
+        };
+      };
+      other: {
+        'official-artwork': {
+          front_default: string;
+        };
+      };
+    };
     url: any;
     name: string;
     id: number;
@@ -36,7 +52,15 @@
           name?: string;
         }
       }
-    ]
+    ];
+    abilities?: [
+      {
+        ability: {
+          name: string;
+        }
+      }
+    ];
+    species: { url: string };
   }
 
   export interface pokemonTypeInterface {

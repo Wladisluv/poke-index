@@ -7,6 +7,7 @@ import { getInitialPokemonData } from './redux/reducers/getInitialPokemonData';
 import Loader from './components/Loader/Loader';
 import Filters from './components/Filters/Filters';
 import { regionLimits } from './utils/regionTypes';
+import Background from './components/Background/Background';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -31,17 +32,21 @@ const App = () => {
   );
 }
 
-  if (sortBy) {
-    filteredPokemon = [...filteredPokemon];
-    filteredPokemon.sort((a, b) => {
-      if (sortBy === "id") {
-        return a.id - b.id;
-      } else if (sortBy === "name") {
-        return a.name.localeCompare(b.name);
-      }
-      return 0;
-    });
-  };
+if (sortBy) {
+  filteredPokemon = [...filteredPokemon];
+  filteredPokemon.sort((a, b) => {
+    if (sortBy === "id") {
+      return a.id - b.id;
+    } else if (sortBy === "name") {
+      return a.name.localeCompare(b.name);
+    } else if (sortBy === "favorites") {
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const favoritePokemonIds = favorites.map((favorite: { id: number }) => favorite.id);
+      filteredPokemon = filteredPokemon.filter((pokemon) => favoritePokemonIds.includes(pokemon.id));
+    }
+    return 0;
+  });
+};
 
 
   if (searchQuery.length > 0) {
@@ -53,9 +58,11 @@ const App = () => {
   const handleSearch = (query: string) => {
     setSearchQuery(query);
   };
-
+  
   return (
-    <div className={styles['app-wrapper']}>
+    <div className={styles.app}>
+     <Background />
+     <div className={styles['app-wrapper']}>
         <Header onSearch={handleSearch} />
       <div className={styles['app-container']}>
         <Filters />
@@ -63,11 +70,12 @@ const App = () => {
         <Loader /> 
         :
         <div className={styles['app-pokecard-container']}>
-        <PokeList pokemons={filteredPokemon} />
+        <PokeList pokemons={filteredPokemon}/>
         </div> 
         }
       </div>
     </div>
+   </div>
   );
 }
 

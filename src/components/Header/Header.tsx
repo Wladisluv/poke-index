@@ -1,5 +1,5 @@
 import Input from '../Input/Input';
-import { HeaderSvgSelector } from './HeaderLogoSvg';
+import { HeaderLogoSvg } from './HeaderLogoSvg';
 import styles from './header.module.scss';
 
 interface HeaderProps {
@@ -12,7 +12,7 @@ const Header = ({ onSearch }: HeaderProps) => {
       <div className={styles['header-wrapper']}>
       <div className={styles['header-container']}>
       <div className={styles.header__logo}>
-      <HeaderSvgSelector id='logo'/>
+      <HeaderLogoSvg/>
       </div>
         <div className={styles['header-right']}>
             <Input onSearch={onSearch}/>

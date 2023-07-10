@@ -1,8 +1,4 @@
 .header {
-    &-wrapper {
-        background-color: #dad8d8;
-    }
-
     &-container {
     margin: 0 auto;
     max-width: 1300px;
@@ -27,7 +23,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        // width: 18rem;
         overflow: hidden;
 
         svg {
