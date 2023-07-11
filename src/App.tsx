@@ -63,16 +63,16 @@ if (sortBy) {
      <Background />
      <div className={styles['app-wrapper']}>
         <Header onSearch={handleSearch} />
+        <div className={styles['app-container']}>
+          <Filters />
       {pending ? 
         <Loader /> 
         :
-      <div className={styles['app-container']}>
-        <Filters />
         <div className={styles['app-pokecard-container']}>
         <PokeList pokemons={filteredPokemon}/>
         </div> 
-      </div>
         }
+        </div>
     </div>
    </div>
   );

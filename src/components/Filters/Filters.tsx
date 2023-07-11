@@ -6,16 +6,20 @@ import {
 } from "../../redux/slices/PokemonSlice";
 import { useAppDispatch } from "../../Hooks/hooks";
 import { pokemonRegions } from "../../utils/regionTypes";
+import { useState } from "react";
 
 const Filters = () => {
+  const [currentRegion, setCurrentRegion] = useState("");
   const dispatch = useAppDispatch();
 
   const handleRegionFilterChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    const region = event.target.value;
-    dispatch(setRegionFilter(region !== "Kanto" ? region : null));
+    const currentRegion = event.target.value;
+    dispatch(setRegionFilter(currentRegion !== "Kanto" ? currentRegion : null));
+    setCurrentRegion(currentRegion);
   };
+  
 
   const handleTypeFilterChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -49,7 +53,7 @@ const Filters = () => {
     "Steel",
     "Fairy",
   ];
-
+  
   return (
     <div className={styles["filters-container"]}>
       <div className={styles.filters__item}>
@@ -59,6 +63,7 @@ const Filters = () => {
         <select
           id="region-filter"
           onChange={handleRegionFilterChange}
+          value={currentRegion}
           className={styles.filters__select}
         >
           {pokemonRegions.map((region) => (
