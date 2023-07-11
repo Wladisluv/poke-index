@@ -1,0 +1,89 @@
+.filters {
+    &-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        width: 60%;
+        position: relative;
+        z-index: 2;
+    }
+    
+    &__item {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        max-height: 150px;
+
+        label {
+          font-family: "Press Start 2P";
+            font-size: 22px;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        select {
+            margin-top: 1rem;
+            width: 8rem;
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-radius: 1rem;
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+            font-family: "Press Start 2P";
+            font-style: italic;
+            font-weight: 700;
+            max-height: 150px;
+      overflow-y: auto;
+              
+              &::-ms-expand {
+                display: none;
+              }
+              
+              &:hover {
+                cursor: pointer;
+                border-color: #999;
+              }
+              
+              &:focus {
+                outline: none;
+                border-color: #555;
+              }
+
+              option {
+                  background-color: #ffa6a6;
+                  font-size: 13px;
+                  color: #333;
+                  border-radius: 1rem;
+                  
+                  &:hover {
+                    cursor: pointer;
+                    background-color: #1d0000;
+                  }
+              }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+  .filters {
+    &-container {
+      display: grid;
+      grid-column: column;
+      gap: 30px;
+        justify-content: center;
+        align-content: center;
+    }
+
+    &__item {
+      select {
+            option {
+          font-size: 8px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}

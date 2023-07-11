@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from './Hooks/hooks';
 import { getInitialPokemonData } from './redux/reducers/getInitialPokemonData';
 import Loader from './components/Loader/Loader';
 import Filters from './components/Filters/Filters';
-import { regionLimits } from '../src/utils/regionTypes';
+import { regionLimits } from './utils/regionTypes';
 import Background from './components/Background/Background';
 
 const App = () => {
